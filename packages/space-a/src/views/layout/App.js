@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./../../logo.svg";
+import "./App.css";
+import FormateDate from "@root/views/ui/date";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         >
           Learn React
         </a>
+
+        <FormateDate value={1576815606} type="all" />
       </header>
     </div>
   );

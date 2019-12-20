@@ -9,13 +9,13 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "cross-env": "5.0.5",
-    "react-scripts": "3.2.0"
+    "my-scripts": "1.0.0"
   },
   "scripts": {
-    "start": "PORT=8088 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "PORT=8088 my-scripts start",
+    "build": "my-scripts build",
+    "test": "my-scripts test",
+    "eject": "my-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
