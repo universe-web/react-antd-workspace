@@ -64,7 +64,7 @@ class DateFormater extends Component {
   render() {
     const { str } = this.state;
 
-    return <psan>{str}</psan>;
+    return <span>{str}</span>;
   }
 }
 
