@@ -5,9 +5,9 @@ import styles from "./App.module.css";
 import "antd/lib/layout/style/css";
 import { connect } from "react-redux";
 
-import { withRouter, Switch, Route } from "react-router-dom";
-import ErrorPath from "./Error";
-import PartOne from "./../PartOne/index";
+import { withRouter } from "react-router-dom";
+
+import Router from "./router";
 
 const { Header, Sider, Content } = Layout;
 
@@ -24,18 +24,7 @@ function App(props) {
     history.push({ pathname: key });
   };
 
-  const renderContent = () => {
-    const { location } = props;
-
-    return (
-      <Switch location={location}>
-        <Route exact path="/" component={PartOne} />
-        <Route path="/partone" component={PartOne} />
-
-        <Route component={ErrorPath} />
-      </Switch>
-    );
-  };
+  const { location } = props;
 
   return (
     <Layout>
@@ -59,7 +48,7 @@ function App(props) {
             minHeight: 980
           }}
         >
-          {renderContent()}
+          <Router location={location} />
         </Content>
       </Layout>
     </Layout>
