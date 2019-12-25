@@ -1,21 +1,75 @@
-import React from "react";
-import logo from "@root/assets/logo.svg";
+import React, { useState } from "react";
+import { Layout, Icon } from "antd";
+import Menu from "./menu";
 import styles from "./App.module.css";
-import FormateDate from "@root/views/ui/date";
-import { stringifyNowTime } from "public-js";
+import "antd/lib/layout/style/css";
+import { connect } from "react-redux";
 
-function App() {
+import { withRouter, Switch, Route } from "react-router-dom";
+import ErrorPath from "./Error";
+import PartOne from "./../PartOne/index";
+
+const { Header, Sider, Content } = Layout;
+
+function App(props) {
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggle = () => {
+    setCollapsed(!collapsed);
+  };
+
+  const handleClickMenu = key => {
+    const { history } = props;
+
+    history.push({ pathname: key });
+  };
+
+  const renderContent = () => {
+    const { location } = props;
+
+    return (
+      <Switch location={location}>
+        <Route exact path="/" component={PartOne} />
+        <Route path="/partone" component={PartOne} />
+
+        <Route component={ErrorPath} />
+      </Switch>
+    );
+  };
+
   return (
-    <div className={styles.App}>
-      <header className={styles.AppHeader}>
-        <img src={logo} className={styles.AppLogo} alt="logo" />
-
-        <span>React</span>
-
-        <FormateDate value={stringifyNowTime()} type="all" />
-      </header>
-    </div>
+    <Layout>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
+        <div className={styles.logo} />
+        <Menu handleClickMenu={handleClickMenu} />
+      </Sider>
+      <Layout>
+        <Header style={{ background: "#fff", padding: 0 }}>
+          <Icon
+            className={styles.trigger}
+            type={collapsed ? "menu-unfold" : "menu-fold"}
+            onClick={toggle}
+          />
+        </Header>
+        <Content
+          style={{
+            margin: "24px 16px",
+            padding: 24,
+            background: "#fff",
+            minHeight: 980
+          }}
+        >
+          {renderContent()}
+        </Content>
+      </Layout>
+    </Layout>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    app: state.app
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(App));
