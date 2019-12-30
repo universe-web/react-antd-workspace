@@ -1,15 +1,21 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import One from "./One";
 import Two from "./Two";
+import { renderPageRoute } from "@root/utils/routerUtil";
 
-function PartOne() {
-  return (
-    <Switch>
-      <Route exact path="/parttwo/one" component={One} />
-      <Route exact path="/parttwo/two" component={Two} />
-    </Switch>
-  );
+const paths = [
+  { path: "/parttwo/one", component: <One /> },
+  { path: "/parttwo/two", component: <Two /> }
+];
+
+function PartTwo() {
+  return renderPageRoute(paths);
 }
 
-export default PartOne;
+/* <Switch>
+  <Route exact path="/parttwo/one" component={One} />
+  <Route exact path="/parttwo/two" component={Two} />
+</Switch> */
+
+export default withRouter(PartTwo);

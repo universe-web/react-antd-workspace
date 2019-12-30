@@ -1,8 +1,6 @@
 import React from "react";
 
-function One(props) {
-  console.log(props);
-
+function One() {
   return <div>PartTwo/One</div>;
 }
 

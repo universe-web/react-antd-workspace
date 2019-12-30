@@ -13,19 +13,18 @@ const paths = [
   { path: "/partone", component: <PartOne /> },
   { path: "/parttwo", component: <PartTwo /> }
 ];
-const Default_Page = <PartOne />;
+const Default_Module = <PartOne />;
 const Error_Page = <ErrorPage />;
 
-var id = 10001;
-createDefend("/parttwo", () => {
-  if (!id) {
+createRouter(paths, Default_Module, Error_Page);
+createDefend({
+  "/parttwo": (from, to) => {
+    if (5 > 3) {
+      return <PartTwo />;
+    }
     return <ErrorPage />;
   }
-
-  return <PartTwo />;
 });
-
-createRouter(paths, Default_Page, Error_Page);
 
 function Router(props) {
   const { pathname } = props.location;
@@ -34,11 +33,11 @@ function Router(props) {
 }
 
 /* <Switch location={location}>
-      <Route exact path="/" component={PartOne} />
-      <Route path="/partone" component={PartOne} />
-      <Route path="/parttwo" component={PartTwo} />
+    <Route exact path="/" component={PartOne} />
+    <Route path="/partone" component={PartOne} />
+    <Route path="/parttwo" component={PartTwo} />
 
-      <Route component={ErrorPage} />
-    </Switch> */
+    <Route component={ErrorPage} />
+  </Switch> */
 
 export default Router;
