@@ -1,5 +1,5 @@
 import React from "react";
-// import { Switch, Route } from "react-router";
+import { Route } from "react-router";
 import ErrorPage from "./Error";
 import PartOne from "./../PartOne/index";
 import PartTwo from "./../PartTwo/index";
@@ -10,19 +10,19 @@ import {
 } from "@root/utils/routerUtil";
 
 const paths = [
-  { path: "/partone", component: <PartOne /> },
-  { path: "/parttwo", component: <PartTwo /> }
+  { path: "/", component: PartOne },
+  { path: "/partone", component: PartOne },
+  { path: "/parttwo", component: PartTwo },
+  { component: ErrorPage }
 ];
-const Default_Module = <PartOne />;
-const Error_Page = <ErrorPage />;
 
-createRouter(paths, Default_Module, Error_Page);
+createRouter(paths);
 createDefend({
   "/parttwo": (from, to) => {
     if (5 > 3) {
-      return <PartTwo />;
+      return <Route component={PartTwo} />;
     }
-    return <ErrorPage />;
+    return <Route component={ErrorPage} />;
   }
 });
 

@@ -1,12 +1,11 @@
-import React from "react";
 import { withRouter } from "react-router-dom";
 import One from "./One";
 import Two from "./Two";
 import { renderPageRoute } from "@root/utils/routerUtil";
 
 const paths = [
-  { path: "/parttwo/one", component: <One /> },
-  { path: "/parttwo/two", component: <Two /> }
+  { path: "/parttwo/one", component: One },
+  { path: "/parttwo/two", component: Two }
 ];
 
 function PartTwo() {

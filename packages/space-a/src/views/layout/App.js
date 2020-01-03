@@ -25,6 +25,7 @@ function App(props) {
   };
 
   const { location } = props;
+  // console.log(window.location.origin);
 
   return (
     <Layout>

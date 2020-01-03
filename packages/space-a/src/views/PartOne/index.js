@@ -5,14 +5,15 @@ import Two from "./Two";
 import { renderPageRoute } from "@root/utils/routerUtil";
 
 const paths = [
-  { path: "/partone/one", component: <One /> },
-  { path: "/partone/two", component: <Two /> }
+  { path: "/", component: One },
+  { path: "/partone/one", component: One },
+  { path: "/partone/two", component: Two }
 ];
-const defaultPage = <One />;
+
 const defend = {
   "/partone/two": (from, to) => {
     if (5 > 3) {
-      console.log(`from: ${from}, to: ${to}`);
+      // console.log(`from: ${from}, to: ${to}`);
       return <Two />;
     }
     return null;
@@ -20,7 +21,7 @@ const defend = {
 };
 
 function PartOne() {
-  return renderPageRoute(paths, defaultPage, false, defend);
+  return renderPageRoute(paths, defend);
 }
 
 /* <Switch>
