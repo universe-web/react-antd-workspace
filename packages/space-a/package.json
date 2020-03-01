@@ -18,7 +18,7 @@
     "redux": "^4.0.5"
   },
   "scripts": {
-    "start": "PORT=8088 my-scripts start",
+    "start": "my-scripts start",
     "build": "my-scripts build",
     "test": "my-scripts test",
     "eject": "my-scripts eject"
