@@ -1,36 +1,38 @@
 import React from "react";
-import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { bindActionCreators } from "redux";
-import { changePartOne } from "@root/actions/index";
+import { useSelector, useDispatch } from "react-redux";
+import { createSelector } from "reselect";
+import { changePartOne } from "@root/actions";
+
+const stateSelector = props => {
+  return createSelector(
+    state => state.part.partone,
+    data => data
+  );
+};
 
 function One(props) {
+  const data = useSelector(stateSelector(props));
+  const dispatch = useDispatch();
+
   const handleChangePartOne = () => {
-    const { changePartOne } = props;
-    changePartOne({ name: "one changed" });
+    dispatch(changePartOne({ name: "one changed" }));
   };
 
+  const handleWinOpen = () => {
+    window.open("https://www.baidu.com");
+  };
   console.log(props);
 
   return (
     <div>
       <p>module: partone</p>
-      <p>name: {props.name}</p>
-
+      <p>name: {data.name}</p>
       <button onClick={handleChangePartOne}>changePartOne</button>
+      <br />
+      <button onClick={handleWinOpen}>window.open</button>
     </div>
   );
 }
 
-const mapStateToProps = state => {
-  const { partone } = state.part;
-  return {
-    ...partone
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ changePartOne }, dispatch);
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(One));
+export default withRouter(One);

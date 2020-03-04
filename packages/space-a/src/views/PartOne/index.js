@@ -24,9 +24,4 @@ function PartOne() {
   return renderPageRoute(paths, defend);
 }
 
-/* <Switch>
-  <Route exact path="/parttwo/one" component={One} />
-  <Route exact path="/parttwo/two" component={Two} />
-</Switch> */
-
 export default withRouter(PartOne);
