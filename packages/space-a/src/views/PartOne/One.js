@@ -1,13 +1,13 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import needLogin from "@root/views/common/needLogin";
 import { useSelector, useDispatch } from "react-redux";
 import { createSelector } from "reselect";
 import { changePartOne } from "@root/actions";
 
-const stateSelector = props => {
+const stateSelector = (props) => {
   return createSelector(
-    state => state.part.partone,
-    data => data
+    (state) => state.part.partone,
+    (data) => data
   );
 };
 
@@ -22,6 +22,7 @@ function One(props) {
   const handleWinOpen = () => {
     window.open("https://www.baidu.com");
   };
+
   console.log(props);
 
   return (
@@ -35,4 +36,4 @@ function One(props) {
   );
 }
 
-export default withRouter(One);
+export default needLogin(One);

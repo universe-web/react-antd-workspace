@@ -3,7 +3,6 @@ import { Layout, Icon } from "antd";
 import Menu from "./menu";
 import styles from "./App.module.css";
 import "antd/lib/layout/style/css";
-import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Router from "./router";
 
@@ -23,7 +22,6 @@ function App(props) {
   };
 
   const { location } = props;
-  // console.log(window.location.origin);
 
   return (
     <Layout>
@@ -54,10 +52,4 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    app: state.app
-  };
-};
-
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(App);
