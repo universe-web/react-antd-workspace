@@ -1,31 +1,22 @@
 import React from "react";
+import { Switch, Route } from "react-router";
 import { withRouter } from "react-router-dom";
 import One from "./One";
 import Two from "./Two";
-import { renderPageRoute } from "@root/utils/routerUtil";
+import Error404 from "../Layout/Error";
 
-const paths = [
-  { path: "/partone/one", component: <One /> },
-  { path: "/partone/two", component: <Two /> }
-];
-const defaultPage = <One />;
-const defend = {
-  "/partone/two": (from, to) => {
-    if (5 > 3) {
-      console.log(`from: ${from}, to: ${to}`);
-      return <Two />;
-    }
-    return null;
-  }
-};
+function PartOne(props) {
+  const { location } = props;
 
-function PartOne() {
-  return renderPageRoute(paths, defaultPage, false, defend);
+  return (
+    <Switch location={location}>
+      <Route exact path="/" component={One} />
+      <Route path="/partone/one" component={One} />
+      <Route path="/partone/two" component={Two} />
+
+      <Route component={Error404} />
+    </Switch>
+  );
 }
-
-/* <Switch>
-  <Route exact path="/parttwo/one" component={One} />
-  <Route exact path="/parttwo/two" component={Two} />
-</Switch> */
 
 export default withRouter(PartOne);

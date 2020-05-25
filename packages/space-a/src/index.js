@@ -3,10 +3,9 @@ import ReactDOM from "react-dom";
 import App from "./views/Layout/App";
 import * as serviceWorker from "./serviceWorker";
 import { HashRouter } from "react-router-dom";
+
 import { Provider } from "react-redux";
-
 import createStore from "./utils/store";
-
 const store = createStore();
 
 ReactDOM.render(

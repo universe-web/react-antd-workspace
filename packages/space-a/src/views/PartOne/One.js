@@ -1,7 +1,39 @@
 import React from "react";
+import needLogin from "@root/views/common/needLogin";
+import { useSelector, useDispatch } from "react-redux";
+import { createSelector } from "reselect";
+import { changePartOne } from "@root/actions";
 
-function One() {
-  return <div>Partone/One</div>;
+const stateSelector = (props) => {
+  return createSelector(
+    (state) => state.part.partone,
+    (data) => data
+  );
+};
+
+function One(props) {
+  const data = useSelector(stateSelector(props));
+  const dispatch = useDispatch();
+
+  const handleChangePartOne = () => {
+    dispatch(changePartOne({ name: "one changed" }));
+  };
+
+  const handleWinOpen = () => {
+    window.open("https://www.baidu.com");
+  };
+
+  console.log(props);
+
+  return (
+    <div>
+      <p>module: partone</p>
+      <p>name: {data.name}</p>
+      <button onClick={handleChangePartOne}>changePartOne</button>
+      <br />
+      <button onClick={handleWinOpen}>window.open</button>
+    </div>
+  );
 }
 
-export default One;
+export default needLogin(One);

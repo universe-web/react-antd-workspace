@@ -1,43 +1,27 @@
 import React from "react";
-// import { Switch, Route } from "react-router";
-import ErrorPage from "./Error";
-import PartOne from "./../PartOne/index";
-import PartTwo from "./../PartTwo/index";
-import {
-  createRouter,
-  createDefend,
-  renderRoute
-} from "@root/utils/routerUtil";
+import { Switch, Route } from "react-router";
+import Error404 from "./Error";
+import PartOne from "@root/views/PartOne";
+import Loadable from "react-loadable";
+import Loading from "./Loadding";
 
-const paths = [
-  { path: "/partone", component: <PartOne /> },
-  { path: "/parttwo", component: <PartTwo /> }
-];
-const Default_Module = <PartOne />;
-const Error_Page = <ErrorPage />;
-
-createRouter(paths, Default_Module, Error_Page);
-createDefend({
-  "/parttwo": (from, to) => {
-    if (5 > 3) {
-      return <PartTwo />;
-    }
-    return <ErrorPage />;
-  }
+const PartTwo = Loadable({
+  loader: () => import("../PartTwo/index"),
+  loading: Loading,
 });
 
 function Router(props) {
-  const { pathname } = props.location;
+  const { location } = props;
 
-  return renderRoute(pathname);
+  return (
+    <Switch location={location}>
+      <Route exact path="/" component={PartOne} />
+      <Route path="/partone" component={PartOne} />
+      <Route path="/parttwo" component={PartTwo} />
+
+      <Route component={Error404} />
+    </Switch>
+  );
 }
-
-/* <Switch location={location}>
-    <Route exact path="/" component={PartOne} />
-    <Route path="/partone" component={PartOne} />
-    <Route path="/parttwo" component={PartTwo} />
-
-    <Route component={ErrorPage} />
-  </Switch> */
 
 export default Router;
