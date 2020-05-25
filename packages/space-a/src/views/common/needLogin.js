@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const mapState = (state) => {
   return {
-    own: state.own.own,
+    isLogin: state.own.own ? true : false,
   };
 };
 
@@ -13,7 +13,11 @@ const needLogin = (WrappedComponent) => {
     render() {
       return (
         <Fragment>
-          {this.props.own ? <WrappedComponent {...this.props} /> : <Login />}
+          {this.props.isLogin ? (
+            <WrappedComponent {...this.props} />
+          ) : (
+            <Login />
+          )}
         </Fragment>
       );
     }
