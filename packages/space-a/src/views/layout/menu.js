@@ -5,7 +5,7 @@ import "antd/lib/menu/style/css";
 const { SubMenu } = Menu;
 
 function AppMenu(props) {
-  const handleClick = e => {
+  const handleClick = (e) => {
     const { handleClickMenu } = props;
     const { key } = e;
 
@@ -48,7 +48,7 @@ function AppMenu(props) {
         }
       >
         <Menu.Item key="/parttwo/one">1</Menu.Item>
-        <Menu.Item key="/parttwo/two">2</Menu.Item>
+        <Menu.Item key="/parttwo/two">弹窗动画</Menu.Item>
         <SubMenu key="sub2-3" title="3">
           <Menu.Item key="sub2-3-1">3-1</Menu.Item>
           <Menu.Item key="sub2-3-2">3-2</Menu.Item>

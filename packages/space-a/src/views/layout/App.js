@@ -15,7 +15,7 @@ function App(props) {
     setCollapsed(!collapsed);
   };
 
-  const handleClickMenu = key => {
+  const handleClickMenu = (key) => {
     const { history } = props;
 
     history.push({ pathname: key });
@@ -39,10 +39,11 @@ function App(props) {
         </Header>
         <Content
           style={{
+            position: "relative",
             margin: "24px 16px",
             padding: 24,
             background: "#fff",
-            minHeight: 980
+            minHeight: 980,
           }}
         >
           <Router location={location} />

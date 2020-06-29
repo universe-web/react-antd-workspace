@@ -6,7 +6,14 @@ import { HashRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import createStore from "./utils/store";
-const store = createStore();
+
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "@root/sagas/index";
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore([sagaMiddleware]);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>

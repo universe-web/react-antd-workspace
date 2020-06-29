@@ -3,8 +3,16 @@ import { combineReducers } from "redux";
 function ownReducer(state = null, action) {
   switch (action.type) {
     case "LOGIN": {
+      return state;
+    }
+    case "LOGIN_COMPLETION": {
+      const { error, data } = action;
+      if (error) {
+        return state;
+      }
+
       return {
-        name: "mai",
+        ...data,
       };
     }
     default:

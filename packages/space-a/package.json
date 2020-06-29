@@ -17,11 +17,13 @@
     "react-router": "5.1.2",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3",
     "reselect": "^4.0.0"
   },
   "scripts": {
     "start": "my-scripts start",
-    "build": "my-scripts build",
+    "build": "NODE_ENV=prod my-scripts build",
     "test": "my-scripts test",
     "eject": "my-scripts eject"
   },
