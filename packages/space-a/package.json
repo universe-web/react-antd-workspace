@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^3.26.4",
     "cross-env": "5.0.5",
+    "echarts": "^4.8.0",
     "my-scripts": "1.0.0",
     "public-js": "1.0.0",
     "react": "^16.12.0",

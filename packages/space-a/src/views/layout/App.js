@@ -27,7 +27,7 @@ function App(props) {
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className={styles.logo} />
-        <Menu handleClickMenu={handleClickMenu} />
+        <Menu handleClickMenu={handleClickMenu} location={location.pathname} />
       </Sider>
       <Layout>
         <Header style={{ background: "#fff", padding: 0 }}>

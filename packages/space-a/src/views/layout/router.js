@@ -10,6 +10,11 @@ const PartTwo = Loadable({
   loading: Loading,
 });
 
+const Visual = Loadable({
+  loader: () => import("../Visual/index"),
+  loading: Loading,
+});
+
 function Router(props) {
   const { location } = props;
 
@@ -18,6 +23,7 @@ function Router(props) {
       <Route exact path="/" component={PartOne} />
       <Route path="/partone" component={PartOne} />
       <Route path="/parttwo" component={PartTwo} />
+      <Route path="/visual" component={Visual} />
 
       <Route component={Error404} />
     </Switch>

@@ -1,19 +1,88 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, Icon } from "antd";
 import "antd/lib/menu/style/css";
+import menus from "@root/utils/paths";
 
 const { SubMenu } = Menu;
 
 function AppMenu(props) {
+  const [openKeys, setOpenKeys] = useState([]);
+  const [selectKeys, setSelectKeys] = useState([]);
+
   const handleClick = (e) => {
     const { handleClickMenu } = props;
     const { key } = e;
 
     handleClickMenu(key);
+    handleSelectKey(key);
   };
+
+  const handleOpenKey = (location) => {
+    const keyArray = location.match(/\/[a-z-]+/gi);
+    setOpenKeys(keyArray.slice(0, -1));
+  };
+
+  const handleSelectKey = (key) => {
+    setSelectKeys([key]);
+  };
+
+  const handleOpenChange = (key) => {
+    setOpenKeys(key);
+  };
+
+  const renderMenuItem = (item) => {
+    const { text, url, icon, children } = item;
+    if (!children) {
+      return (
+        <Menu.Item key={url}>
+          {icon && <Icon type={icon} />}
+          <span>{text}</span>
+        </Menu.Item>
+      );
+    }
+
+    return (
+      <SubMenu
+        key={url}
+        title={
+          <span>
+            {icon && <Icon type={icon} />}
+            <span>{text}</span>
+          </span>
+        }
+      >
+        {children.map((item) => {
+          return renderMenuItem(item);
+        })}
+      </SubMenu>
+    );
+  };
+
+  useEffect(() => {
+    handleOpenKey(props.location);
+  }, [props]);
 
   return (
     <Menu
+      onClick={handleClick}
+      style={{ width: "100%" }}
+      defaultSelectedKeys={["/partone"]}
+      theme="dark"
+      mode="inline"
+      openKeys={openKeys}
+      selectedKeys={selectKeys}
+      onOpenChange={handleOpenChange}
+    >
+      {menus.map((item) => {
+        return renderMenuItem(item);
+      })}
+    </Menu>
+  );
+}
+
+export default AppMenu;
+
+/* <Menu
       onClick={handleClick}
       style={{ width: "100%" }}
       defaultSelectedKeys={["partone"]}
@@ -56,8 +125,4 @@ function AppMenu(props) {
       </SubMenu>
 
       <Menu.Item key="/partthree/one">第三部分</Menu.Item>
-    </Menu>
-  );
-}
-
-export default AppMenu;
+    </Menu> */
