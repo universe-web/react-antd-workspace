@@ -20,6 +20,21 @@ export default [
     ],
   },
   {
+    text: "Part-Two",
+    url: "/parttwo",
+    icon: "code",
+    children: [
+      {
+        text: "One",
+        url: "/parttwo/one",
+      },
+      {
+        text: "弹窗动画",
+        url: "/parttwo/two",
+      },
+    ],
+  },
+  {
     text: "html5",
     url: "/html",
     icon: "html5",

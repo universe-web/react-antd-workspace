@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import echarts from "echarts";
+import echarts from "echarts/lib/echarts";
 import "echarts/lib/chart/pie";
 
 function Line() {

@@ -9,17 +9,17 @@ function AppMenu(props) {
   const [openKeys, setOpenKeys] = useState([]);
   const [selectKeys, setSelectKeys] = useState([]);
 
+  useEffect(() => {
+    const keyArray = props.location.match(/\/[a-z0-9-_]+/gi);
+    setOpenKeys(keyArray ? keyArray.slice(0, -1) : []);
+  }, [props.location]);
+
   const handleClick = (e) => {
     const { handleClickMenu } = props;
     const { key } = e;
 
     handleClickMenu(key);
     handleSelectKey(key);
-  };
-
-  const handleOpenKey = (location) => {
-    const keyArray = location.match(/\/[a-z-]+/gi);
-    setOpenKeys(keyArray.slice(0, -1));
   };
 
   const handleSelectKey = (key) => {
@@ -57,10 +57,6 @@ function AppMenu(props) {
       </SubMenu>
     );
   };
-
-  useEffect(() => {
-    handleOpenKey(props.location);
-  }, [props]);
 
   return (
     <Menu
