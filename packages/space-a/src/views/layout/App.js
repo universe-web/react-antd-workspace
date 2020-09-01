@@ -43,8 +43,6 @@ function App(props) {
             margin: "24px 16px",
             padding: 24,
             background: "#fff",
-            display: "flex",
-            flexDirection: "column",
           }}
         >
           <Router location={location} />

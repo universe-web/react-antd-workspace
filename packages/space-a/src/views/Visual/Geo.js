@@ -55,7 +55,7 @@ function Geo() {
   };
 
   return (
-    <div style={{ flex: "1", height: "0" }}>
+    <div style={{ height: "100%" }}>
       <div ref={echart} style={{ width: "100%", height: "100%" }} />
     </div>
   );
