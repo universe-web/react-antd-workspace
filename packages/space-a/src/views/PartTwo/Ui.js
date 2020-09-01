@@ -4,7 +4,7 @@ import "antd/lib/message/style/css";
 import Modal from "@root/views/UI/modal.js";
 import MyModal from "@root/views/UI/MyModal";
 
-function Two() {
+function UI() {
   const [modalShow, setModalShow] = useState(false);
 
   const handleOpenModal = () => {
@@ -43,4 +43,4 @@ function Two() {
   );
 }
 
-export default Two;
+export default UI;

@@ -3,14 +3,14 @@ import echarts from "echarts/lib/echarts";
 import "echarts/lib/chart/pie";
 
 function Line() {
-  const line = useRef();
+  const echart = useRef();
 
   useEffect(() => {
     initLine();
   }, []);
 
   const initLine = () => {
-    let lChart = echarts.init(line.current);
+    let lChart = echarts.init(echart.current);
     lChart.setOption({
       title: {
         text: "周数据",
@@ -60,7 +60,7 @@ function Line() {
 
   return (
     <div>
-      <div ref={line} style={{ width: "100%", height: "400px" }} />
+      <div ref={echart} style={{ width: "100%", height: "400px" }} />
     </div>
   );
 }

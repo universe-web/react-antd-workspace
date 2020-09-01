@@ -25,12 +25,12 @@ export default [
     icon: "code",
     children: [
       {
-        text: "One",
-        url: "/parttwo/one",
+        text: "Canvas",
+        url: "/parttwo/canvas",
       },
       {
         text: "弹窗动画",
-        url: "/parttwo/two",
+        url: "/parttwo/ui",
       },
     ],
   },
@@ -51,6 +51,14 @@ export default [
       {
         text: "折线图",
         url: "/visual/line",
+      },
+      {
+        text: "柱状图",
+        url: "/visual/bar",
+      },
+      {
+        text: "地图",
+        url: "/visual/geo",
       },
     ],
   },

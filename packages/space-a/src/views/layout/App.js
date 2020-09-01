@@ -24,7 +24,7 @@ function App(props) {
   const { location } = props;
 
   return (
-    <Layout>
+    <Layout style={{ minHeight: "100vh" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className={styles.logo} />
         <Menu handleClickMenu={handleClickMenu} location={location.pathname} />
@@ -43,7 +43,8 @@ function App(props) {
             margin: "24px 16px",
             padding: 24,
             background: "#fff",
-            minHeight: 980,
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           <Router location={location} />
